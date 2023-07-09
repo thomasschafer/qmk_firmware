@@ -1,5 +1,66 @@
 #include QMK_KEYBOARD_H
 
+
+enum custom_keycodes {
+  MACRO_10_LEFT = SAFE_RANGE,
+  MACRO_10_RIGHT,
+  MACRO_10_UP,
+  MACRO_10_DOWN,
+  MACRO_10_BACKSPACE,
+  MACRO_10_DELETE,
+  // You can add more custom keycodes here
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MACRO_10_LEFT:
+            if (record->event.pressed) {
+                for(int i = 0; i < 10; i++) {
+                    tap_code(KC_LEFT);
+                }
+            }
+            return false;
+        case MACRO_10_RIGHT:
+            if (record->event.pressed) {
+                for(int i = 0; i < 10; i++) {
+                    tap_code(KC_RIGHT);
+                }
+            }
+            return false;
+        case MACRO_10_UP:
+            if (record->event.pressed) {
+                for(int i = 0; i < 10; i++) {
+                    tap_code(KC_UP);
+                }
+            }
+            return false;
+        case MACRO_10_DOWN:
+            if (record->event.pressed) {
+                for(int i = 0; i < 10; i++) {
+                    tap_code(KC_DOWN);
+                }
+            }
+            return false;
+        case MACRO_10_BACKSPACE:
+            if (record->event.pressed) {
+                for(int i = 0; i < 10; i++) {
+                    tap_code(KC_BSPC);
+                }
+            }
+            return false;
+        case MACRO_10_DELETE:
+            if (record->event.pressed) {
+                for(int i = 0; i < 10; i++) {
+                    tap_code(KC_DEL);
+                }
+            }
+            return false;
+        default:
+            return true;
+    }
+}
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[0] = LAYOUT_split_3x5_2(
 		KC_Q, KC_W, KC_E, KC_R, KC_T,
@@ -18,11 +79,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC,
 		KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
 
-    LSFT_T(KC_GRV), KC_LCTL, LALT_T(KC_MINS), LGUI_T(KC_EQL), KC_NO,
-    KC_NO, RGUI_T(KC_QUOT), RALT_T(KC_BSLS), RCTL_T(KC_LBRC), RSFT_T(KC_RBRC),
+		LSFT_T(KC_GRV), KC_LCTL, LALT_T(KC_MINS), LGUI_T(KC_EQL), KC_NO,
+		KC_NO, RGUI_T(KC_QUOT), RALT_T(KC_BSLS), RCTL_T(KC_LBRC), RSFT_T(KC_RBRC),
 
-    KC_TILD, LGUI(KC_GRV), KC_UNDS, KC_PLUS, KC_NO,
-    KC_NO, KC_DQUO, KC_PIPE, KC_LCBR, KC_RCBR,
+		KC_TILD, LGUI(KC_GRV), KC_UNDS, KC_PLUS, KC_NO,
+		KC_NO, KC_DQUO, KC_PIPE, KC_LCBR, KC_RCBR,
 
 		KC_TRNS, KC_TRNS,
 		KC_TRNS, KC_TRNS
@@ -41,23 +102,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TRNS, KC_TRNS
 	),
 	[3] = LAYOUT_split_3x5_2(
-		KC_ESC, KC_NO, KC_UP, KC_NO, KC_NO,
-		KC_TRNS, KC_PGDN, KC_PGUP, KC_NO, KC_NO,
+		KC_ESC, KC_NO, KC_NO, KC_NO, KC_NO,
+		KC_NO, KC_PGDN, KC_PGUP, KC_NO, KC_NO,
 
-		LSFT_T(KC_TAB), LCTL_T(KC_LEFT), LALT_T(KC_DOWN), LGUI_T(KC_RGHT), KC_NO,
+		LSFT_T(KC_TAB), LCTL_T(KC_LEFT), LALT_T(KC_UP), LGUI_T(KC_DOWN), KC_RGHT,
 		KC_LEFT, RGUI_T(KC_DOWN), RALT_T(KC_UP), RCTL_T(KC_RGHT), RSFT_T(KC_NO),
 
-		KC_CAPS, KC_NO, KC_NO, KC_NO, KC_NO,
+		KC_CAPS, MACRO_10_LEFT, MACRO_10_UP, MACRO_10_DOWN, MACRO_10_RIGHT,
 		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 
-		KC_TRNS, KC_TRNS,
+		MACRO_10_DELETE, MACRO_10_BACKSPACE,
 		KC_TRNS, KC_TRNS
 	),
 	[4] = LAYOUT_split_3x5_2(
-		KC_NO, KC_NO, KC_MS_U, KC_NO, KC_NO,
+		KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
 		KC_NO, KC_NO, KC_NO, KC_NO, QK_BOOT,
 
-		LSFT_T(KC_NO), KC_MS_L, KC_MS_D, KC_MS_R, KC_NO,
+		LSFT_T(KC_NO), KC_MS_L, KC_MS_U, KC_MS_D, KC_MS_R,
 		KC_MUTE, RGUI_T(KC_MNXT), RALT_T(KC_VOLU), RCTL_T(KC_BRIU), RSFT_T(KC_NO),
 
 		KC_NO, KC_NO, KC_BTN2, KC_BTN1, KC_NO,
