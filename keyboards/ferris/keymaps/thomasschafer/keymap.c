@@ -8,7 +8,6 @@ enum custom_keycodes {
   MACRO_10_DOWN,
   MACRO_10_BACKSPACE,
   MACRO_10_DELETE,
-  // You can add more custom keycodes here
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
