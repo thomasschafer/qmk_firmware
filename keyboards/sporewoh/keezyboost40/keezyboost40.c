@@ -28,14 +28,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "kicub.qgf.h"
 #include "qp.h"
 
-
-static painter_device_t lcd;
+static painter_device_t       lcd;
 static painter_image_handle_t image;
 // static painter_font_handle_t font;
 
 const int HEIGHT = 160;
-const int WIDTH = 128;
-
+const int WIDTH  = 128;
 
 void keyboard_post_init_kb(void) {
     // Turn on the LCD
@@ -55,9 +53,8 @@ void keyboard_post_init_kb(void) {
     // begin drawing space
     qp_rect(lcd, 0, 0, WIDTH, HEIGHT, 127, 230, 255, true);
 
-    
     image = qp_load_image_mem(gfx_kicub);
-    
+
     if (image != NULL) {
         // qp_drawimage(lcd, 0, 0, image);
         qp_drawimage_recolor(lcd, 2, 8, image, 0, 255, 0, 127, 230, 255);
@@ -77,6 +74,4 @@ void keyboard_post_init_kb(void) {
 
 #define NUM_PLANETS 4
 
-void housekeeping_task_user(void) {
-
-}
+void housekeeping_task_user(void) {}
