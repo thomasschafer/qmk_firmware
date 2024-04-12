@@ -109,8 +109,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {[0] = LAYOUT_ortho
 
                                                                                       KC_NO, KC_NO, KC_BTN2, KC_BTN1, KC_NO, KC_MPLY, KC_MPRV, KC_VOLD, KC_BRID, KC_NO,
 
-                                                                                      KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO)
+                                                                                      KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO),
+                                                              [5] = LAYOUT_ortho_4x10(KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,
+                                                                                        KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,
 
+                                                                                        LSFT_T(KC_F11), LCTL_T(KC_F12), LALT_T(KC_NO), LGUI_T(KC_NO), KC_NO,
+                                                                                        KC_NO, RGUI_T(KC_NO), RALT_T(KC_NO), RCTL_T(KC_NO), RSFT_T(KC_NO),
+
+                                                                                        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                                                                                        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+
+                                                                                        KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS,
+                                                                                        KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO)
 };
 
 void keyboard_post_init_user(void) {
