@@ -65,4 +65,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 0
 #define IGNORE_MOD_TAP_INTERRUPT false
-#undef TAPPING_FORCE_HOLD
+#define TAPPING_FORCE_HOLD false
